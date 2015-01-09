@@ -48,7 +48,7 @@ See the xPL message with a logger
     longitude=4.40272
     enable=true
     }
-    172.16.2.6:42764 [xpl-stat/suncalc.config: bnz-suncalc.srv -> * 45.429179/4.40272/true]
+    192.168.0.1:42764 [xpl-stat/suncalc.config: bnz-suncalc.srv -> * 45.429179/4.40272/true]
     suncalc.config
     {
     latitude=45.429179
