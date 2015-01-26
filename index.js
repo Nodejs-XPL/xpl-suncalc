@@ -25,10 +25,9 @@ wt._init(function(error, xpl) {
                 if(evt.headerName == 'xpl-cmnd') wt.readConfig();
         });
 
-
-        /*xpl.on("xpl:suncalc.config", function(evt) {
+        xpl.on("xpl:suncalc.config", function(evt) {
                 if(evt.headerName == 'xpl-cmnd' && wt.validConfigSchema(evt.body)) wt.writeConfig(evt.body);
-        }); */
+        });
 
         xpl.on("xpl:suncalc.basic", function(evt) {
                 if(evt.headerName == 'xpl-cmnd' && wt.validBasicSchema(evt.body)) wt.sendSunlight(date.getHours(), date.getMinutes());
