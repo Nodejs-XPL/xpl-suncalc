@@ -1,7 +1,10 @@
 var xplsuncalc = require("./lib/xpl-suncalc");
+var schema_Suncalcbasic = require('/etc/wiseflat/schemas/suncalc.basic.json');
+var schema_Suncalcconfig = require('/etc/wiseflat/schemas/suncalc.config.json');
 
 var wt = new xplsuncalc(null, {
-	//xplSource: 'bnz-sysinfo.wiseflat'
+	xplLog: false,
+        forceBodySchemaValidation: false
 });
 
 wt._init(function(error, xpl) {
@@ -11,6 +14,9 @@ wt._init(function(error, xpl) {
 		return;
 	}
         
+	xpl.addBodySchema(schema_Suncalcbasic.id, schema_Suncalcbasic.definitions.body);
+	xpl.addBodySchema(schema_Suncalcconfig.id, schema_Suncalcconfig.definitions.body);
+	
         // Load config file into hash
         wt.readConfig();
         
@@ -26,11 +32,11 @@ wt._init(function(error, xpl) {
         });
 
         xpl.on("xpl:suncalc.config", function(evt) {
-                if(evt.headerName == 'xpl-cmnd' && wt.validConfigSchema(evt.body)) wt.writeConfig(evt.body);
+                if(evt.headerName == 'xpl-cmnd') wt.writeConfig(evt.body);
         });
 
         xpl.on("xpl:suncalc.basic", function(evt) {
-                if(evt.headerName == 'xpl-cmnd' && wt.validBasicSchema(evt.body)) wt.sendSunlight(date.getHours(), date.getMinutes());
+                if(evt.headerName == 'xpl-cmnd') wt.sendSunlight(date.getHours(), date.getMinutes());
         });
 });
 
