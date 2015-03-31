@@ -4,7 +4,7 @@
   "description": "xPL module to suncalc",
   "main": "./lib/xpl-suncalc.js",
   "dependencies": {
-    "xpl-api": "Nodejs-XPL/xpl-api#schemaValidation",
+    "xpl-api": "~1.0.12",
     "os-utils": "~0.0.14",
     "fs": "~0.0.2",
     "suncalc": "~1.6.0"
