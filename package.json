@@ -1,6 +1,6 @@
 {
   "name": "xpl-suncalc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "xPL module to suncalc",
   "main": "./lib/xpl-suncalc.js",
   "dependencies": {
