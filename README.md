@@ -11,13 +11,6 @@ Node JS layer to execute suncalc through xPL API
 
 ## Usage
 
-You need to install the xPL_Hub first : https://github.com/Tieske/xPL4Linux
-
-Send xpl-cmnd to get the configuration of the module
-
-    $ xpl-send -m cmnd -c shell.request
-
-There is no configuration at all at the beginning
 See the xPL message with a logger
 
     root@srv:~# xpl-logger -i eth0 -v --body class=suncalc
