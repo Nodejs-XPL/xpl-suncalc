@@ -3,38 +3,23 @@ var schema_Suncalcbasic = require('/etc/wiseflat/schemas/suncalc.basic.json');
 var schema_Suncalcconfig = require('/etc/wiseflat/schemas/suncalc.config.json');
 
 var wt = new xplsuncalc(null, {
-	xplLog: false,
+        xplLog: false,
         forceBodySchemaValidation: false
 });
 
 wt._init(function(error, xpl) {
 
-	if (error) {
-		console.error(error);
-		return;
-	}
-        
-	xpl.addBodySchema(schema_Suncalcbasic.id, schema_Suncalcbasic.definitions.body);
-	xpl.addBodySchema(schema_Suncalcconfig.id, schema_Suncalcconfig.definitions.body);
-	
-        // Load config file into hash
-        wt.readConfig();
-        
-        // Send every minutes an xPL status message 
-        setInterval(function(){
-		if(wt.configHash.enable) {
-			var date = new Date();
-			wt.sendConfig();
-			wt.sendSunlight(date.getHours(), date.getMinutes());	
-		}
-        }, 60 * 1000);
+        if (error) {
+            console.error(error);
+            return;
+        }
 
-        /*xpl.on("xpl:suncalc.basic", function(evt) {
-                if(wt.configHash.enable && evt.headerName == 'xpl-cmnd') wt.sendSunlight(date.getHours(), date.getMinutes());
-        });*/
-	
-        xpl.on("xpl:suncalc.config", function(evt) {
-                if(evt.headerName == 'xpl-cmnd') wt.writeConfig(evt);
+        xpl.addBodySchema(schema_Suncalcbasic.id, schema_Suncalcbasic.definitions.body);
+        xpl.addBodySchema(schema_Suncalcconfig.id, schema_Suncalcconfig.definitions.body);
+
+        xpl.on("xpl:suncalc.config", function(message) {
+                if(message.headerName == 'xpl-cmnd') wt.update_config_cmnd(message);
         });
+	
 });
 
