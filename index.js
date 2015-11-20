@@ -12,9 +12,6 @@ wt._init(function(error, xpl) {
             return;
         }
 
-        xpl.addBodySchema(schema_Suncalcbasic.id, schema_Suncalcbasic.definitions.body);
-        xpl.addBodySchema(schema_Suncalcconfig.id, schema_Suncalcconfig.definitions.body);
-
         xpl.on("xpl:suncalc.config", function(message) {
                 if(message.headerName == 'xpl-cmnd') wt.update_config_cmnd(message);
         });
