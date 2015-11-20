@@ -1,6 +1,4 @@
 var xplsuncalc = require("./lib/xpl-suncalc");
-var schema_Suncalcbasic = require('/etc/wiseflat/schemas/suncalc.basic.json');
-var schema_Suncalcconfig = require('/etc/wiseflat/schemas/suncalc.config.json');
 
 var wt = new xplsuncalc(null, {
         xplLog: false,

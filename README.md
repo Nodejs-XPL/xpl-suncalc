@@ -11,6 +11,10 @@ Node JS layer to execute suncalc through xPL API
 
 ## Usage
 
+Start the service
+
+    root@srv:~# node index.js
+
 See the xPL message with a logger
 
     root@srv:~# xpl-logger -i eth0 -v --body class=suncalc
